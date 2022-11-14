@@ -1,6 +1,9 @@
+const Swiper = require('../model/swiperImg.model')
+
 class SwiperImgService {
-  async getImg(imgPath) {
-    return '读取图片成功'
+  async getImg() {
+    const res = await Swiper.findAll()
+    return res ? res.dataValues : null
   }
 }
 

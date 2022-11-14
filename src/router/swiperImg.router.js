@@ -1,9 +1,9 @@
 const Router = require('koa-router')
 
-const { swiperImg } = require('../controller/swiperImg.controller')
+const { registerSwiperImg } = require('../controller/swiperImg.controller')
 
 const router = new Router()
 
-router.get('/swiperImg', swiperImg)
+router.get('/swiperImg', registerSwiperImg)
 
 module.exports = router

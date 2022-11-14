@@ -1,8 +1,12 @@
-const { createImg } = require('../service/swiperImg.service')
+const { getImg } = require('../service/swiperImg.service')
 
 class SwiperImgController {
-  async swiperImg(ctx, next) {
-    ctx.body = '请求图片成功'
+  async registerSwiperImg(ctx, next) {
+    if (getImg()) {
+      ctx.body = '获取图片成功'
+    } else {
+      ctx.body = '获取图片失败'
+    }
   }
 }
 
