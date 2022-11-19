@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const seq = require('../db/seq')
 
-const Code = seq.define('code', {
+const registerCode = seq.define('registerCode', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -14,6 +14,6 @@ const Code = seq.define('code', {
   }
 })
 
-// Code.sync({ force: true })
+// registerCode.sync({ force: true })
 
-module.exports = Code
+module.exports = registerCode

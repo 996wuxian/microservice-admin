@@ -47,7 +47,7 @@ module.exports = {
     result: ''
   },
   CodeError: {
-    code: '10111',
+    code: 10111,
     message: '验证码无效',
     result: ''
   },

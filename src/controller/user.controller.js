@@ -51,6 +51,28 @@ class UserController {
       // ctx.app.emit('error', userLoginError, ctx)
     }
   }
+
+  // 修改密码
+  async forgotPassword(ctx, next) {
+    console.log('123');
+    // 获取当前要修改的用户数据
+  //   const id = ctx.state.user.id
+  //   const password = ctx.request.body.password
+  //   // 操作数据库
+  //   if (await updateById({ id, password })) {
+  //     ctx.body = {
+  //       code: 0,
+  //       message: '修改密码成功',
+  //       result: ''
+  //     }
+  //   } else {
+  //     ctx.body = {
+  //       code: '10007',
+  //       message: '修改密码失败',
+  //       result: ''
+  //     }
+  //   }
+  }
 }
 
 module.exports = new UserController()

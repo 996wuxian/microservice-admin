@@ -1,4 +1,4 @@
-// const { getImg } = require('../service/swiperImg.service')
+const { getImg } = require('../service/swiperImg.service')
 
 class SwiperImgController {
   async registerPackInfo(ctx, next) {

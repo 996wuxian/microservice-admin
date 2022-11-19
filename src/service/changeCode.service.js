@@ -1,9 +1,9 @@
-const Code = require('../model/code.model')
+const changeCode = require('../model/changeCode.model')
 
 class CodeService {
   // 插入邮箱和code
   async bindCode(email, code) {
-    const res = await Code.create({ email, code })
+    const res = await changeCode.create({ email, code })
     return res.dataValues
   }
 
@@ -16,11 +16,26 @@ class CodeService {
     code && Object.assign(whereOpt, { code })
     createdAt && Object.assign(whereOpt, { createdAt })
 
-    const res = await Code.findOne({
+    const res = await changeCode.findOne({
       attributes: ['id', 'email', 'code', 'createdAt'],
       where: whereOpt
     })
     return res ? res.dataValues : '查询失败'
+  }
+
+  // 删除code
+  async deleteCode({id, email, code}) {
+    const whereOpt = {}
+
+    id && Object.assign(whereOpt, { id })
+    email && Object.assign(whereOpt, { email })
+    code && Object.assign(whereOpt, { code })
+
+    const res = await changeCode.destroy({
+      attributes: ['id', 'email', 'code'],
+      where: whereOpt
+    })
+    return res ? res.dataValues : '删除失败'
   }
 }
 

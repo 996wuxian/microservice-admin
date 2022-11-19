@@ -10,7 +10,11 @@ const {
 
 const seq = new Sequelize(MYSQL_DB, MYSQL_USER, MYSQL_PWD, {
   host: MYSQL_HOST,
-  dialect: 'mysql'
+  dialect: 'mysql',
+  timezone:'+08:00',   //创建的createdAt/updatedAt会比当前的小时少8个小时
+  dialectOptions: {
+    useUTC: false
+  }
 })
 
 // 使用authenticate测试连接

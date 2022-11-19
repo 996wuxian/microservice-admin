@@ -1,11 +1,11 @@
-const { bindCode } = require('../service/code.service')
+const { bindCode } = require('../service/registerCode.service')
 
 // 导入验证码nodemailer
 const nodemailer = require('nodemailer')
 
-class CodeController {
+class RegisterController {
   // 发送验证码
-  async getCode(ctx, next) {
+  async getRegCode(ctx, next) {
     // 创建一个code
     let codes = Math.floor(Math.random() * 900000) + 100000
     // 建立一个smtp连接
@@ -54,9 +54,10 @@ class CodeController {
       }
     } catch (error) {
       console.log(error)
+      return
     } 
     await next()
   }
 }
   
-module.exports = new CodeController
+module.exports = new RegisterController()

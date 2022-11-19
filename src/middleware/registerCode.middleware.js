@@ -1,11 +1,12 @@
 const { emailCodeError, CodeError } = require('../constant/err.type')
-const { checkCode } = require('../service/code.service')
+const { checkCode, deleteCode } = require('../service/registerCode.service')
+
 // 格式化时间的包
 const moment = require('moment')
 // 关闭提示
 moment.suppressDeprecationWarnings = true;
 
-const verifyCode = async (ctx, next) => {
+const verifyRegisterCode = async (ctx, next) => {
   // code使用的时间,输入的code，请求体里的数据
   const { email, code, codeDate } = ctx.request.body
   // 生成写入数据库的code
@@ -30,6 +31,7 @@ const verifyCode = async (ctx, next) => {
      // 判断验证码是否有效
      if (TimeComparison < 15) {
       console.log('验证码有效')
+      const res = await deleteCode({ code })
       await next()
     } else {
       console.error('验证码无效', { code })
@@ -40,5 +42,5 @@ const verifyCode = async (ctx, next) => {
 }
 
 module.exports = {
-  verifyCode
+  verifyRegisterCode
 }

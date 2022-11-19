@@ -12,7 +12,6 @@ class UserService {
   // 查询用户
   async getUserInfo({ id, email, password, is_admin }) {
     const whereOpt = {}
-
     // 短路运算
     // 当前者不为空时,执行后面代码,将{ } 里的属性通过assign方法拷贝到whereOpt里
     id && Object.assign(whereOpt, { id })
@@ -25,8 +24,22 @@ class UserService {
       // where条件
       where: whereOpt
     })
-
     return res ? res.dataValues : null
+  }
+  // 根据邮箱去更新数据库实现修改 
+  async updateByEmail({ id, email, password}, is_admin) {
+    const whereOpt = { email }
+    const newUser = {}
+    // 追加到newUser里
+    id && Object.assign( newUser, { id })
+    password && Object.assign( newUser, { password })
+    is_admin && Object.assign( newUser, { is_admin })
+    // 更新语句
+    const res = await User.update(newUser, {
+      where: whereOpt
+    })
+    // 如果修改成功,则为[1],失败为[0],此时返回true和false让controller里的修改密码做判断，如果这里修改成功则那边显示成功的结果
+    return res[0] > 0 ? true : false
   }
 }
 
