@@ -1,3 +1,4 @@
+// 注册登录路由
 const Router = require('koa-router')
 
 // 验证邮箱密码不为空、验证邮箱是否存在、加密密码、验证登录
@@ -17,7 +18,7 @@ const {  getRegCode } = require('../controller/registerCode.controller')
 const {  getChgCode } = require('../controller/changeCode.controller')
 // 确认修改者的邮箱和验证码
 const {  confirmChange } = require('../controller/ConfirmChange.controller')
-
+// 忘记密码重置密码
 const {  forgotPassword } = require('../controller/forgotPwd.controller')
 
 const router = new Router({ prefix: '/users' })

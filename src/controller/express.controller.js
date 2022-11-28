@@ -1,14 +1,14 @@
 
-const { addPack, getPack, updatePack, deletePack } = require('../service/packaged.service')
+const { addExpress, getExpress, updateExpress, deleteExpress } = require('../service/express.service')
 // const { getUserInfo } = require('../service/user.service')
 
-class Packaged {
+class Express {
   // 添加打包信息
-  async addPack(ctx, next) {
+  async addExpress(ctx, next) {
     // const res = await getUserInfo()
-    const { packTitle, address, pack_data, price, email } = ctx.request.body
+    const { expressTitle, address, pack_data, price, email } = ctx.request.body
     try {
-      const res = await addPack( packTitle, address, pack_data, price, email )
+      const res = await addExpress( expressTitle, address, pack_data, price, email )
       ctx.body = {
         code: 200,
         message: '添加打包信息成功',
@@ -19,9 +19,9 @@ class Packaged {
     }
   }
   // 获取所有打包信息
-  async getPack(ctx, next) {
+  async getExpress(ctx, next) {
     try {
-      const res = await getPack()
+      const res = await getExpress()
       ctx.body = {
         code: 200,
         message: '获取所有用户信息成功',
@@ -32,10 +32,10 @@ class Packaged {
     }
   }
   // 修改打包信息
-  async updatePack(ctx, next) {
-    const { id, packTitle, address, pack_data, price, email, is_packaged } = ctx.request.body
+  async updateExpress(ctx, next) {
+    const { id, expressTitle, address, pack_data, price, email, is_packaged } = ctx.request.body
     try {
-      const res = await updatePack(id, packTitle, address, pack_data, price, email, is_packaged)
+      const res = await updateExpress(id, expressTitle, address, pack_data, price, email, is_packaged)
       ctx.body = {
         code: 200,
         message: '修改打包信息成功',
@@ -46,10 +46,10 @@ class Packaged {
     }
   }
   // 删除打包信息
-  async deletePack(ctx, next) {
+  async deleteExpress(ctx, next) {
     const { id, email, is_packaged } = ctx.request.body
     try {
-      const res = await deletePack( id, email, is_packaged )
+      const res = await deleteExpress( id, email, is_packaged )
       if (!res) {
         ctx.body = {
           code: 200,
@@ -64,4 +64,4 @@ class Packaged {
   }
 }
 
-module.exports = new Packaged()
+module.exports = new Express()

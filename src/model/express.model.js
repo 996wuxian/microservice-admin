@@ -2,16 +2,16 @@ const { DataTypes } = require('sequelize')
 
 const seq = require('../db/seq')
 
-const Package = seq.define('package', {
+const Express = seq.define('express', {
   // headPortrait: {
   //   type: DataTypes.TEXT,
   //   allowNull: false,
   //   comments:'头像'
   // },
-  packTitle: {
+  expressTitle: {
     type: DataTypes.TEXT,
     allowNull: null,
-    comments:'打包标题'
+    comments:'快递标题'
   },
   address: {
     type: DataTypes.TEXT,
@@ -46,6 +46,6 @@ const Package = seq.define('package', {
   timestamps: false,
 })
 
-// Package.sync({ force: true })
+// Express.sync({ force: true })
 
-module.exports = Package
+module.exports = Express

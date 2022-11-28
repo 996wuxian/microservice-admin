@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const { createUser, getUserInfo } = require('../service/user.service')
 
 // 导入错误类型
-const { userRegisterError } = require('../constant/err.type')
+const { userRegisterError, userLoginError } = require('../constant/err.type')
 
 // 导入jwt环境变量
 const { JWT_SECRET } = require('../config/config.default')
@@ -26,6 +26,7 @@ class UserController {
         }
       }
     } catch (err) {
+      // 将userRegisterError这个装着错误信息的对象用emit提交，里面有code，再由app.on('error', errHandler)的errHandler进行统一的错误处理
       ctx.app.emit('error', userRegisterError, ctx)
     }
   }
@@ -43,12 +44,13 @@ class UserController {
         result: {
           // 颁发token
           // sign()放的是一个对象,即将res放入,然后第二个参数为定义的私钥,第三个设置过去时间：expiresIn 1天
-          token: jwt.sign(res, JWT_SECRET, {expiresIn: '1d'})
+          token: jwt.sign(res, JWT_SECRET, {expiresIn: '1d'}),
+          username: email
         }
       }
     } catch (err) {
       console.error('用户登录失败', err)
-      // ctx.app.emit('error', userLoginError, ctx)
+      ctx.app.emit('error', userLoginError, ctx)
     }
   }
 

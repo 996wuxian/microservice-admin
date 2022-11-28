@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 const { JWT_SECRET } = require('../config/config.default')
 
-const { tokenExpiredError } = require('../constant/err.type')
+const { tokenExpiredError, invalidToken } = require('../constant/err.type')
 
 const auth = async (ctx, next) => {
   // 拿到请求头

@@ -4,13 +4,8 @@ const cors = require('koa2-cors')
 
 // 导入错误处理
 const errHandler = require('./errHandler')
-
-// 轮播图路由
-const swiperImgRouter = require('../router/swiperImg.router')
-// 打包路由
-const packagedRouter = require('../router/packaged.router')
-// 注册登录路由
-const userRouter = require('../router/user.router')
+// 导入总的路由
+const router = require('../router/index')
 
 const app = new Koa()
 
@@ -33,9 +28,8 @@ app.use(
 );
 
 app.use(koaBody())
-app.use(userRouter.routes())
-app.use(swiperImgRouter.routes())
-app.use(packagedRouter.routes())
+// 全局生效总路由
+app.use(router.routes())
 
 // 统一的错误处理
 app.on('error', errHandler)

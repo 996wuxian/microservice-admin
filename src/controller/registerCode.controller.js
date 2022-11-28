@@ -15,7 +15,7 @@ class RegisterController {
       port: 465,
       auth: {
         user: 'wuxian_996@qq.com',  //我的邮箱账号
-        pass: 'zxpohdnnpuaxcjhg'   //QQ邮箱授权码
+        pass: 'aaweyikmlsjfchjc'   //QQ邮箱授权码
       }
     })
     // 配置相关参数
