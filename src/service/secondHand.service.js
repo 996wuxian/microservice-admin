@@ -1,19 +1,19 @@
-const Pack = require('../model/packaged.model')
-class PackService {
+const SecondHand = require('../model/secondHand.model')
+class SecondHandService {
   // 添加打包信息
-  async addPack( title, address, date, price, email  ) {
-    const res = await Pack.create({ title, address, date, price, email })
+  async addSecond( title, address, date, price, email  ) {
+    const res = await SecondHand.create({ title, address, date, price, email })
     return res ? res : null
   }
   // 获取所有打包信息
-  async getPack() {
-    const res = await Pack.findAll({
+  async getSecond() {
+    const res = await SecondHand.findAll({
       raw: true
     })
     return res ? res : null
   }
   // 修改打包信息
-  async updatePack(id, title, address, date, price, email, is_order, orderUser) {
+  async updateSecond(id, title, address, date, price, email, is_order, orderUser) {
     const whereOpt = { id, email }
     const newUser = {}
     // // 追加到newUser里
@@ -24,18 +24,18 @@ class PackService {
     is_order && Object.assign( newUser, { is_order })
     orderUser && Object.assign( newUser, { orderUser })
     // 更新语句
-    const res = await Pack.update(newUser, {
+    const res = await SecondHand.update(newUser, {
       where: whereOpt
     })
     return res[0] > 0 ? true : false
   }
   // 删除打包信息
-  async deletePack( id, email ) {
+  async deleteSecond( id, email ) {
     const whereOpt = { id, email }
-    const res = await Pack.destroy({
+    const res = await SecondHand.destroy({
       where: whereOpt
     })
     return res[0] > 0 ? true : false
   }
 }
-module.exports = new PackService()
+module.exports = new SecondHandService()

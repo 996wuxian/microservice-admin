@@ -1,14 +1,14 @@
 
-const { addPack, getPack, updatePack, deletePack } = require('../service/packaged.service')
+const { addInfo, getInfo, updateInfo, deleteInfo } = require('../service/other.service')
 // const { getUserInfo } = require('../service/user.service')
 
-class Packaged {
+class Other {
   // 添加打包信息
-  async addPack(ctx, next) {
+  async addInfo(ctx, next) {
     // const res = await getUserInfo()
-    const { title, address, date, price, email } = ctx.request.body
+    const { title, date, email } = ctx.request.body
     try {
-      const res = await addPack( title, address, date, price, email )
+      const res = await addInfo( title, date, email )
       ctx.body = {
         code: 200,
         message: '添加打包信息成功',
@@ -19,9 +19,9 @@ class Packaged {
     }
   }
   // 获取所有打包信息
-  async getPack(ctx, next) {
+  async getInfo(ctx, next) {
     try {
-      const res = await getPack()
+      const res = await getInfo()
       ctx.body = {
         code: 200,
         message: '获取所有用户信息成功',
@@ -32,10 +32,10 @@ class Packaged {
     }
   }
   // 修改打包信息
-  async updatePack(ctx, next) {
-    const { id, title, address, date, price, email, is_order, orderUser } = ctx.request.body
+  async updateInfo(ctx, next) {
+    const { id, title, date, email } = ctx.request.body
     try {
-      const res = await updatePack(id, title, address, date, price, email, is_order, orderUser)
+      const res = await updateInfo( id, title, date, email )
       ctx.body = {
         code: 200,
         message: '修改打包信息成功',
@@ -46,10 +46,10 @@ class Packaged {
     }
   }
   // 删除打包信息
-  async deletePack(ctx, next) {
-    const { id, email, is_order } = ctx.request.body
+  async deleteInfo(ctx, next) {
+    const { id, email } = ctx.request.body
     try {
-      const res = await deletePack( id, email, is_order )
+      const res = await deleteInfo( id, email )
       if (!res) {
         ctx.body = {
           code: 200,
@@ -64,4 +64,4 @@ class Packaged {
   }
 }
 
-module.exports = new Packaged()
+module.exports = new Other()

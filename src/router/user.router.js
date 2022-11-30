@@ -8,8 +8,6 @@ const { verifyRegisterCode } = require('../middleware/registerCode.middleware')
 // 验证忘记密码验证码
 const { verifyForgotCode } = require('../middleware/confirmCode.middleware')
 
-// 导入权限中间件
-// const { auth } = require('../middleware/auth.middleware')
 // 注册，登录，修改密码
 const { register, login } = require('../controller/user.controller')
 // 获取注册验证码

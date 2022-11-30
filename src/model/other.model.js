@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 
 const seq = require('../db/seq')
 
-const Express = seq.define('express', {
+const Other = seq.define('other', {
   // headPortrait: {
   //   type: DataTypes.TEXT,
   //   allowNull: false,
@@ -13,38 +13,16 @@ const Express = seq.define('express', {
     allowNull: null,
     comments:'快递标题'
   },
-  address: {
-    type: DataTypes.TEXT,
-    allowNull: null,
-    comments:'地址'
-  },
   date: {
     type: DataTypes.STRING,
     allowNull: null,
     comments:'日期'
-  },
-  price: {
-    type: DataTypes.STRING,
-    allowNull: null,
-    comments:'价格'
   },
   email: {
     type: DataTypes.STRING,
     allowNull: null,
     comments:'外键连接user表'
   },
-  is_order: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: 0,
-    comments:'是否打包，1是，0否'
-  },
-  orderUser: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    allowNull: null,
-    comments:'接单者'
-  }
 }, {
   charset: 'utf8',
   collate: 'utf8_unicode_ci',
@@ -52,6 +30,6 @@ const Express = seq.define('express', {
   timestamps: false,
 })
 
-// Express.sync({ force: true })
+// Other.sync({ force: true })
 
-module.exports = Express
+module.exports = Other

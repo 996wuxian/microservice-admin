@@ -1,8 +1,8 @@
 const Express = require('../model/express.model')
 class ExpressService {
   // 添加打包信息
-  async addExpress( expressTitle, address, pack_data, price, email  ) {
-    const res = await Express.create({ expressTitle, address, pack_data, price, email })
+  async addExpress( title, address, date, price, email  ) {
+    const res = await Express.create({ title, address, date, price, email })
     return res ? res : null
   }
   // 获取所有打包信息
@@ -13,16 +13,16 @@ class ExpressService {
     return res ? res : null
   }
   // 修改打包信息
-  async updateExpress(id, expressTitle, address, pack_data, price, email, is_packaged) {
-    console.log(id, expressTitle, address, pack_data, price, email, is_packaged)
+  async updateExpress(id, title, address, date, price, email, is_order, orderUser) {
     const whereOpt = { id, email }
     const newUser = {}
     // // 追加到newUser里
-    expressTitle && Object.assign( newUser, { expressTitle })
+    title && Object.assign( newUser, { title })
     address && Object.assign( newUser, { address })
-    pack_data && Object.assign( newUser, { pack_data })
+    date && Object.assign( newUser, { date })
     price && Object.assign( newUser, { price })
-    is_packaged && Object.assign( newUser, { is_packaged })
+    is_order && Object.assign( newUser, { is_order })
+    orderUser && Object.assign( newUser, { orderUser })
     // 更新语句
     const res = await Express.update(newUser, {
       where: whereOpt

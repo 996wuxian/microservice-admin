@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 
 const seq = require('../db/seq')
 
-const Package = seq.define('package', {
+const SecondHand = seq.define('secondHand', {
   // headPortrait: {
   //   type: DataTypes.TEXT,
   //   allowNull: false,
@@ -11,7 +11,7 @@ const Package = seq.define('package', {
   title: {
     type: DataTypes.TEXT,
     allowNull: null,
-    comments:'打包标题'
+    comments:'快递标题'
   },
   address: {
     type: DataTypes.TEXT,
@@ -21,7 +21,7 @@ const Package = seq.define('package', {
   date: {
     type: DataTypes.STRING,
     allowNull: null,
-    comments:'地址'
+    comments:'日期'
   },
   price: {
     type: DataTypes.STRING,
@@ -52,6 +52,6 @@ const Package = seq.define('package', {
   timestamps: false,
 })
 
-// Package.sync({ force: true })
+// SecondHand.sync({ force: true })
 
-module.exports = Package
+module.exports = SecondHand

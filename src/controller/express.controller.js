@@ -6,9 +6,9 @@ class Express {
   // 添加打包信息
   async addExpress(ctx, next) {
     // const res = await getUserInfo()
-    const { expressTitle, address, pack_data, price, email } = ctx.request.body
+    const { title, address, date, price, email } = ctx.request.body
     try {
-      const res = await addExpress( expressTitle, address, pack_data, price, email )
+      const res = await addExpress( title, address, date, price, email )
       ctx.body = {
         code: 200,
         message: '添加打包信息成功',
@@ -33,9 +33,9 @@ class Express {
   }
   // 修改打包信息
   async updateExpress(ctx, next) {
-    const { id, expressTitle, address, pack_data, price, email, is_packaged } = ctx.request.body
+    const { id, title, address, date, price, email, is_order, orderUser } = ctx.request.body
     try {
-      const res = await updateExpress(id, expressTitle, address, pack_data, price, email, is_packaged)
+      const res = await updateExpress(id, title, address, date, price, email, is_order, orderUser)
       ctx.body = {
         code: 200,
         message: '修改打包信息成功',
@@ -47,9 +47,9 @@ class Express {
   }
   // 删除打包信息
   async deleteExpress(ctx, next) {
-    const { id, email, is_packaged } = ctx.request.body
+    const { id, email, is_order } = ctx.request.body
     try {
-      const res = await deleteExpress( id, email, is_packaged )
+      const res = await deleteExpress( id, email, is_order )
       if (!res) {
         ctx.body = {
           code: 200,

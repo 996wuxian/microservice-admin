@@ -45,7 +45,8 @@ class UserController {
           // 颁发token
           // sign()放的是一个对象,即将res放入,然后第二个参数为定义的私钥,第三个设置过去时间：expiresIn 1天
           token: jwt.sign(res, JWT_SECRET, {expiresIn: '1d'}),
-          username: email
+          username: email,
+          is_admin: res.is_admin
         }
       }
     } catch (err) {
