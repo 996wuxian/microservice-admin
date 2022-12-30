@@ -6,9 +6,9 @@ class Other {
   // 添加打包信息
   async addInfo(ctx, next) {
     // const res = await getUserInfo()
-    const { title, date, email } = ctx.request.body
+    const { microUserId, title, date, email } = ctx.request.body
     try {
-      const res = await addInfo( title, date, email )
+      const res = await addInfo( microUserId, title, date, email )
       ctx.body = {
         code: 200,
         message: '添加打包信息成功',

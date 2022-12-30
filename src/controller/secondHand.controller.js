@@ -1,14 +1,12 @@
 
 const { addSecond, getSecond, updateSecond, deleteSecond } = require('../service/secondHand.service')
-// const { getUserInfo } = require('../service/user.service')
 
 class SecondHand {
   // 添加打包信息
   async addSecond(ctx, next) {
-    // const res = await getUserInfo()
-    const { title, address, date, price, email } = ctx.request.body
+    const { microUserId, title, address, date, price, email } = ctx.request.body
     try {
-      const res = await addSecond( title, address, date, price, email )
+      const res = await addSecond( microUserId, title, address, date, price, email )
       ctx.body = {
         code: 200,
         message: '添加打包信息成功',
@@ -33,9 +31,9 @@ class SecondHand {
   }
   // 修改打包信息
   async updateSecond(ctx, next) {
-    const { id, title, address, date, price, email, is_order, orderUser } = ctx.request.body
+    const { id, title, address, date, price, email, is_order, is_finish, orderUser } = ctx.request.body
     try {
-      const res = await updateSecond(id, title, address, date, price, email, is_order, orderUser)
+      const res = await updateSecond(id, title, address, date, price, email, is_order, is_finish, orderUser)
       ctx.body = {
         code: 200,
         message: '修改打包信息成功',

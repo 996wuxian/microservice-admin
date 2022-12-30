@@ -6,7 +6,7 @@ const seq = require('../db/seq')
 // 创建模型(表)ms_user  会映射出一张表为 ms_users
 const User = seq.define('microUser', {
   // 定义表字段
-  // id 会呗sequelize自动创建管理
+  // 当不定义主键时，id 会被sequelize自动创建管理
   email: {
     // STRING 对应表的数据类型为varchar
     type: DataTypes.STRING,
@@ -22,12 +22,13 @@ const User = seq.define('microUser', {
   },
   is_admin: {
     // STRING 对应表的数据类型为varchar
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 0,
-    comment: '0不是管理员(默认),1是管理员'
+    defaultValue: '否',
+    comment: '管理员'
   }
 })
+
 // sync:同步这个模型到数据库  force: true:当数据库存在这张表,则删除这张表重新创建,创建完后需要注释掉
 // User.sync({ force: true })
 

@@ -1,8 +1,8 @@
 const Other = require('../model/other.model')
 class OtherService {
   // 添加打包信息
-  async addInfo( title, date, email  ) {
-    const res = await Other.create({ title, date, email })
+  async addInfo( microUserId, title, date, email  ) {
+    const res = await Other.create({ microUserId, title, date, email })
     return res ? res : null
   }
   // 获取所有打包信息

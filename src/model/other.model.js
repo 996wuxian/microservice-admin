@@ -8,6 +8,11 @@ const Other = seq.define('other', {
   //   allowNull: false,
   //   comments:'头像'
   // },
+  microUserId: {
+    type: DataTypes.STRING,
+    allowNull: null,
+    comment: "外键"
+  },
   title: {
     type: DataTypes.TEXT,
     allowNull: null,
@@ -21,7 +26,7 @@ const Other = seq.define('other', {
   email: {
     type: DataTypes.STRING,
     allowNull: null,
-    comments:'外键连接user表'
+    comments:'创建者'
   },
 }, {
   charset: 'utf8',

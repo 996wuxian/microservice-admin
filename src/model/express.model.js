@@ -8,6 +8,11 @@ const Express = seq.define('express', {
   //   allowNull: false,
   //   comments:'头像'
   // },
+  microUserId: {
+    type: DataTypes.STRING,
+    allowNull: null,
+    comment: "外键"
+  },
   title: {
     type: DataTypes.TEXT,
     allowNull: null,
@@ -31,13 +36,19 @@ const Express = seq.define('express', {
   email: {
     type: DataTypes.STRING,
     allowNull: null,
-    comments:'外键连接user表'
+    comments:'创建者'
   },
   is_order: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 0,
-    comments:'是否打包，1是，0否'
+    defaultValue: '否',
+    comments:'是否打包'
+  },
+  is_finish: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '否',
+    comments:'是否完成'
   },
   orderUser: {
     type: DataTypes.STRING,

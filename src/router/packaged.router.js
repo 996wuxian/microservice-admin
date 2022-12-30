@@ -8,7 +8,7 @@ const router = new Router({ prefix: '/packaged' })
 // 添加打包信息
 router.post('/addPack', auth, addPack)
 // 获取所有打包信息
-router.get('/getPack', auth, getPack)
+router.get('/getPack',auth, getPack)
 // 修改打包信息
 router.post('/updatePack', auth, updatePack)
 // 删除打包信息

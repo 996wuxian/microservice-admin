@@ -22,7 +22,7 @@ class UserService {
     const res = await User.findOne({
       attributes: ['id', 'email', 'password', 'is_admin'],
       // where条件
-      where: whereOpt
+      where: whereOpt,
     })
     return res ? res.dataValues : null
   }

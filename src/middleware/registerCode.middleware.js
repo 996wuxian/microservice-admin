@@ -13,6 +13,7 @@ const verifyRegisterCode = async (ctx, next) => {
   // 获取请求体里的email和code去表里查响应的数据
   // 正确输入才能拿到res的内容
   // 如果输入错误的邮箱或者错误的code,这个是根据请求体里面传入的参数获取的
+  console.log(codeDate);
   const res = await checkCode({ email, code })
   // 查不到res的情况
   if (res === '查询失败') {

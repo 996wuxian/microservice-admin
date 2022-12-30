@@ -4,46 +4,57 @@ const seq = require('../db/seq')
 
 const Package = seq.define('package', {
   // headPortrait: {
-  //   type: DataTypes.TEXT,
+  //   type: DataTypes.TEXT, 
   //   allowNull: false,
   //   comments:'头像'
   // },
+  microUserId: {
+    type: DataTypes.STRING,
+    allowNull: null,
+    comment: "外键"
+  },
   title: {
     type: DataTypes.TEXT,
     allowNull: null,
-    comments:'打包标题'
+    comments: "打包标题"
   },
   address: {
     type: DataTypes.TEXT,
     allowNull: null,
-    comments:'地址'
+    comments: "地址"
   },
   date: {
     type: DataTypes.STRING,
     allowNull: null,
-    comments:'地址'
+    comments: "日期"
   },
   price: {
     type: DataTypes.STRING,
     allowNull: null,
-    comments:'价格'
+    comments: "价格"
   },
   email: {
     type: DataTypes.STRING,
     allowNull: null,
-    comments:'外键连接user表'
+    comments: "创建者"
   },
   is_order: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 0,
-    comments:'是否打包，1是，0否'
+    defaultValue: "否",
+    comments: "是否打包"
+  },
+  is_finish: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "否",
+    comments: "是否完成"
   },
   orderUser: {
     type: DataTypes.STRING,
     allowNull: false,
     allowNull: null,
-    comments:'接单者'
+    comments: "接单者"
   }
 }, {
   charset: 'utf8',
